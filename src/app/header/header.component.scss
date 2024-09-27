@@ -1,0 +1,59 @@
+.header {
+  width: 100%;
+  background-color: rgba(253, 203, 158, 1);
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header__logo-image {
+  max-width: 20%;
+  max-height: 20%;
+  padding: 0 20px;
+}
+
+.header__nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header__list {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.header__link {
+  display: block;
+  padding: 10px 20px;
+  line-height: 100%;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #38A3A5;
+}
+
+.sign-in-btn {
+  color: #38A3A5;
+  border: thick double #2E4057;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sign-in-btn:hover {
+  background-color: #2E4057;
+  color: #F4F1DE;
+}
+
+.contact-us-btn {
+  border: thick double rgba(253, 203, 158, 1);
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-us-btn:hover {
+  color: #2E4057;
+}
