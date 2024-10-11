@@ -1,0 +1,47 @@
+<section class="contact-us">
+  <form class="contact-us__form" id="contact-us">
+    <legend class="contact-us__header">
+      <p class="contact-us__description">Contact us if you have questions</p>
+    </legend>
+
+    <div class="contact-us__form-field">
+      <input
+        class="contact-us__text-field"
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your name"
+        minlength="2"
+        maxlength="35"
+        required
+      />
+    </div>
+
+    <div class="contact-us__form-field">
+      <input
+        class="contact-us__text-field"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+        maxlength="255"
+        required
+      />
+    </div>
+
+    <div class="contact-us__form-field">
+      <textarea
+        class="contact-us__text-field contact-us__message-field"
+        id="message"
+        name="message"
+        placeholder="Write your message"
+        rows="3"
+        required
+      ></textarea>
+    </div>
+
+    <section class="contact-us__button">
+      <input type="submit" id="submit" class="contact-us__submit-button" value="Submit form" />
+    </section>
+  </form>
+</section>

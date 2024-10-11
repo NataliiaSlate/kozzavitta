@@ -1,0 +1,72 @@
+
+.contact-us {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  align-content: space-around;
+  background-color: rgba(56, 163, 165, 0.2);
+}
+
+.contact-us__form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: cent;
+  max-width: 700px;
+  width: 100%;
+  gap: 15px;
+}
+
+.contact-us__header {
+  background-color: #38A3A5;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  color: #F4F1DE;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.contact-us__text-field {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #38A3A5;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.contact-us__text-field:focus {
+  border-color: #2E4057;
+}
+
+.contact-us__message-field {
+  height: auto;
+  resize: vertical;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.contact-us__button {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-us__submit-button {
+  padding: 10px 20px;
+  background-color: #38A3A5;
+  color: #F4F1DE;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-us__submit-button:hover {
+  background-color: #2E4057;
+}
+
+.contact-us__description {
+  margin: 0;
+}
