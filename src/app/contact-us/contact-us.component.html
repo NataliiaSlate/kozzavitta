@@ -1,7 +1,9 @@
-<p *ngIf="isSubmittedSuccessfully" class="contact-us__success-message">Form successfully submitted!</p>
+@if (isSubmittedSuccessfully) {
+  <p class="contact-us__success-message">Form successfully submitted!</p>
+}
 
 <section class="contact-us">
-  <form [formGroup]="contactUsForm" (ngSubmit)="submit()" class="contact-us__form" id="contact-us">
+  <form [formGroup]="contactUsForm" class="contact-us__form" id="contact-us">
     <legend class="contact-us__header">
       <p class="contact-us__description">Contact us if you have questions</p>
     </legend>
@@ -15,19 +17,19 @@
         name="name"
         placeholder="Enter your name"
       />
-      <div
-        *ngIf="
-          contactUsForm.controls['username'].touched && contactUsForm.controls['username'].errors as usernameErrors
-        "
-      >
-        <span *ngIf="usernameErrors['required']" class="contact-us__error-message">Username is required</span>
-        <span *ngIf="usernameErrors['minlength']" class="contact-us__error-message">
-          Username must be at least 2 characters long
-        </span>
-        <span *ngIf="usernameErrors['maxlength']" class="contact-us__error-message">
-          Username cannot exceed 35 characters
-        </span>
-      </div>
+      @if (contactUsForm.controls['username'].touched && contactUsForm.controls['username'].errors; as usernameErrors) {
+        <div>
+          @if (usernameErrors['required']) {
+            <span class="contact-us__error-message">Username is required</span>
+          }
+          @if (usernameErrors['minlength']) {
+            <span class="contact-us__error-message"> Username must be at least 2 characters long </span>
+          }
+          @if (usernameErrors['maxlength']) {
+            <span class="contact-us__error-message"> Username cannot exceed 35 characters </span>
+          }
+        </div>
+      }
     </div>
 
     <div class="contact-us__form-field">
@@ -39,13 +41,19 @@
         name="email"
         placeholder="Enter your email"
       />
-      <div *ngIf="contactUsForm.controls['email'].touched && contactUsForm.controls['email'].errors as emailErrors">
-        <span *ngIf="emailErrors['required']" class="contact-us__error-message">Email is required</span>
-        <span *ngIf="emailErrors['email']" class="contact-us__error-message">Email is not valid</span>
-        <span *ngIf="emailErrors['maxlength']" class="contact-us__error-message"
-          >Email cannot exceed 255 characters</span
-        >
-      </div>
+      @if (contactUsForm.controls['email'].touched && contactUsForm.controls['email'].errors; as emailErrors) {
+        <div>
+          @if (emailErrors['required']) {
+            <span class="contact-us__error-message">Email is required</span>
+          }
+          @if (emailErrors['email']) {
+            <span class="contact-us__error-message">Email is not valid</span>
+          }
+          @if (emailErrors['maxlength']) {
+            <span class="contact-us__error-message">Email cannot exceed 255 characters</span>
+          }
+        </div>
+      }
     </div>
 
     <div class="contact-us__form-field">
@@ -57,17 +65,19 @@
         placeholder="Write your message"
         rows="3"
       ></textarea>
-      <div
-        *ngIf="contactUsForm.controls['message'].touched && contactUsForm.controls['message'].errors as messageErrors"
-      >
-        <span *ngIf="messageErrors['required']" class="contact-us__error-message">Message is required</span>
-        <span *ngIf="messageErrors['minlength']" class="contact-us__error-message">
-          Message must be at least 5 characters long
-        </span>
-        <span *ngIf="messageErrors['maxlength']" class="contact-us__error-message">
-          Message cannot exceed 255 characters
-        </span>
-      </div>
+      @if (contactUsForm.controls['message'].touched && contactUsForm.controls['message'].errors; as messageErrors) {
+        <div>
+          @if (messageErrors['required']) {
+            <span class="contact-us__error-message">Message is required</span>
+          }
+          @if (messageErrors['minlength']) {
+            <span class="contact-us__error-message"> Message must be at least 5 characters long </span>
+          }
+          @if (messageErrors['maxlength']) {
+            <span class="contact-us__error-message"> Message cannot exceed 255 characters </span>
+          }
+        </div>
+      }
     </div>
 
     <section class="contact-us__button">
