@@ -70,3 +70,23 @@
 .contact-us__description {
   margin: 0;
 }
+
+.contact-us__success-message {
+  color: rgba(244, 241, 222, 1);
+  background-color:  rgba(46, 64, 87, 0.5);
+  padding: 0.75em;
+  border-radius: 8px;
+  font-size: 1em;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-us__error-message {
+  display: block;
+  align-items: center;
+  color: rgb(199, 20, 20);
+  padding: 0px;
+  border-radius: 4px;
+  margin: 0;
+  font-size: 1em;
+}

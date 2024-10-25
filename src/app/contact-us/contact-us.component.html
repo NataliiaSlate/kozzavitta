@@ -1,47 +1,85 @@
+<p *ngIf="isSubmittedSuccessfully" class="contact-us__success-message">Form successfully submitted!</p>
+
 <section class="contact-us">
-  <form class="contact-us__form" id="contact-us">
+  <form [formGroup]="contactUsForm" (ngSubmit)="submit()" class="contact-us__form" id="contact-us">
     <legend class="contact-us__header">
       <p class="contact-us__description">Contact us if you have questions</p>
     </legend>
 
     <div class="contact-us__form-field">
       <input
+        formControlName="username"
         class="contact-us__text-field"
         type="text"
         id="name"
         name="name"
         placeholder="Enter your name"
-        minlength="2"
-        maxlength="35"
-        required
       />
+      <div
+        *ngIf="
+          contactUsForm.controls['username'].touched && contactUsForm.controls['username'].errors as usernameErrors
+        "
+      >
+        <span *ngIf="usernameErrors['required']" class="contact-us__error-message">Username is required</span>
+        <span *ngIf="usernameErrors['minlength']" class="contact-us__error-message">
+          Username must be at least 2 characters long
+        </span>
+        <span *ngIf="usernameErrors['maxlength']" class="contact-us__error-message">
+          Username cannot exceed 35 characters
+        </span>
+      </div>
     </div>
 
     <div class="contact-us__form-field">
       <input
+        formControlName="email"
         class="contact-us__text-field"
         type="email"
         id="email"
         name="email"
         placeholder="Enter your email"
-        maxlength="255"
-        required
       />
+      <div *ngIf="contactUsForm.controls['email'].touched && contactUsForm.controls['email'].errors as emailErrors">
+        <span *ngIf="emailErrors['required']" class="contact-us__error-message">Email is required</span>
+        <span *ngIf="emailErrors['email']" class="contact-us__error-message">Email is not valid</span>
+        <span *ngIf="emailErrors['maxlength']" class="contact-us__error-message"
+          >Email cannot exceed 255 characters</span
+        >
+      </div>
     </div>
 
     <div class="contact-us__form-field">
       <textarea
+        formControlName="message"
         class="contact-us__text-field contact-us__message-field"
         id="message"
         name="message"
         placeholder="Write your message"
         rows="3"
-        required
       ></textarea>
+      <div
+        *ngIf="contactUsForm.controls['message'].touched && contactUsForm.controls['message'].errors as messageErrors"
+      >
+        <span *ngIf="messageErrors['required']" class="contact-us__error-message">Message is required</span>
+        <span *ngIf="messageErrors['minlength']" class="contact-us__error-message">
+          Message must be at least 5 characters long
+        </span>
+        <span *ngIf="messageErrors['maxlength']" class="contact-us__error-message">
+          Message cannot exceed 255 characters
+        </span>
+      </div>
     </div>
 
     <section class="contact-us__button">
-      <input type="submit" id="submit" class="contact-us__submit-button" value="Submit form" />
+      <button
+        type="button"
+        id="submit"
+        class="contact-us__submit-button"
+        [disabled]="contactUsForm.invalid"
+        (click)="submit()"
+      >
+        Submit form
+      </button>
     </section>
   </form>
 </section>
