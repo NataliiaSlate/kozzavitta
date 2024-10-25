@@ -25,16 +25,12 @@ export class ContactUsComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.contactUsForm.valid) {
-      console.log('Form is submitted');
-      console.log(this.contactUsForm.value);
-      this.isSubmittedSuccessfully = true;
+    this.isSubmittedSuccessfully = true;
 
-      setTimeout(() => {
-        this.isSubmittedSuccessfully = false;
-      }, 10000);
+    setTimeout(() => {
+      this.isSubmittedSuccessfully = false;
+    }, 10000);
 
-      this.contactUsForm.reset();
-    }
+    this.contactUsForm.reset();
   }
 }
