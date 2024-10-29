@@ -21,11 +21,9 @@
         <div>
           @if (usernameErrors['required']) {
             <span class="contact-us__error-message">Username is required</span>
-          }
-          @if (usernameErrors['minlength']) {
+          } @else if (usernameErrors['minlength']) {
             <span class="contact-us__error-message"> Username must be at least 2 characters long </span>
-          }
-          @if (usernameErrors['maxlength']) {
+          } @else {
             <span class="contact-us__error-message"> Username cannot exceed 35 characters </span>
           }
         </div>
@@ -45,11 +43,9 @@
         <div>
           @if (emailErrors['required']) {
             <span class="contact-us__error-message">Email is required</span>
-          }
-          @if (emailErrors['email']) {
+          } @else if (emailErrors['email']) {
             <span class="contact-us__error-message">Email is not valid</span>
-          }
-          @if (emailErrors['maxlength']) {
+          } @else {
             <span class="contact-us__error-message">Email cannot exceed 255 characters</span>
           }
         </div>
@@ -65,16 +61,19 @@
         placeholder="Write your message"
         rows="3"
       ></textarea>
+
       @if (contactUsForm.controls['message'].touched && contactUsForm.controls['message'].errors; as messageErrors) {
         <div>
-          @if (messageErrors['required']) {
-            <span class="contact-us__error-message">Message is required</span>
-          }
-          @if (messageErrors['minlength']) {
-            <span class="contact-us__error-message"> Message must be at least 5 characters long </span>
-          }
-          @if (messageErrors['maxlength']) {
-            <span class="contact-us__error-message"> Message cannot exceed 255 characters </span>
+          @switch (true) {
+            @case (messageErrors['required']) {
+              <span class="contact-us__error-message">Message is required</span>
+            }
+            @case (messageErrors['minlength']) {
+              <span class="contact-us__error-message"> Message must be at least 5 characters long </span>
+            }
+            @default {
+              <span class="contact-us__error-message"> Message cannot exceed 255 characters </span>
+            }
           }
         </div>
       }
