@@ -3,11 +3,11 @@
   type="button"
   label="Contact Us"
   icon="pi pi-envelope"
-  (click)="overlay.toggle($event)"
+  (onClick)="overlay.toggle($event)"
   id="contact-us"
 ></p-button>
 
-<p-overlayPanel #overlay [dismissable]="true" [showCloseIcon]="true">
+<p-overlayPanel #overlay [showCloseIcon]="true">
   <section class="contact-us">
     <form [formGroup]="contactUsForm" class="contact-us__form">
       <legend class="contact-us__header">
