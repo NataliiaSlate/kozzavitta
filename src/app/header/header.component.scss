@@ -1,9 +1,10 @@
 .header {
   width: 100%;
   background-color: rgba(253, 203, 158, 1);
-  padding: 10px 10px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
 }
 
@@ -56,4 +57,82 @@
 
 .contact-us-btn:hover {
   color: #2E4057;
+}
+
+.header__menu {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.header__menu-text {
+  font-size: 2em;
+  color: #2E4057;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.header__menu-text:hover {
+  color: #38A3A5;
+  transform: scale(1.05);
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar__logo-image {
+  max-width: 30%;
+  max-height: 30%;
+  padding: 0 20px;
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.sidebar__name {
+  color: #38A3A5;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 3px solid #2E4057;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.highlight {
+  color: #F4F1DE;
+  text-shadow:
+    -1px -1px 0  #2E4057,
+    1px -1px 0  #2E4057,
+    -1px 1px 0  #2E4057,
+    1px 1px 0  #2E4057;
+}
+
+.sidebar__menu {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.sidebar__button-text {
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar__button {
+  width: 100%;
+  text-decoration: none;
+}
+
+.sidebar__bottom-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }

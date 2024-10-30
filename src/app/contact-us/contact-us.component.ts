@@ -1,10 +1,29 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'ngt-contact-us',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  providers: [MessageService],
+  imports: [
+    ReactiveFormsModule,
+    ButtonModule,
+    ToastModule,
+    CommonModule,
+    FormsModule,
+    FloatLabelModule,
+    InputTextModule,
+    InputTextareaModule,
+    OverlayPanelModule,
+  ],
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.scss',
 })
@@ -15,8 +34,12 @@ export class ContactUsComponent implements OnInit {
     message: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(500)]],
   });
   isSubmittedSuccessfully: boolean | undefined;
+  value: string = '';
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly messageService: MessageService,
+  ) {}
 
   ngOnInit(): void {
     this.contactUsForm.statusChanges.subscribe((status) => {
@@ -25,12 +48,10 @@ export class ContactUsComponent implements OnInit {
   }
 
   submit(): void {
-    this.isSubmittedSuccessfully = true;
-
-    setTimeout(() => {
-      this.isSubmittedSuccessfully = false;
-    }, 10000);
-
+    this.messageService.add({
+      severity: 'info',
+      detail: 'Thank you! We will get back to you soon',
+    });
     this.contactUsForm.reset();
   }
 }

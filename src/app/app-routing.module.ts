@@ -30,6 +30,10 @@ const routes: Routes = [
     loadComponent: () => import('./chat/chat.component').then((x) => x.ChatComponent),
   },
   {
+    path: AppRoutes.Login,
+    loadComponent: () => import('./login/login.component').then((x) => x.LoginComponent),
+  },
+  {
     path: AppRoutes.Other,
     loadComponent: () => import('./shared/pages/not-found/not-found.component').then((x) => x.NotFoundComponent),
   },

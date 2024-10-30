@@ -1,94 +1,96 @@
-@if (isSubmittedSuccessfully) {
-  <p class="contact-us__success-message">Form successfully submitted!</p>
-}
+<p-button
+  label="Primary"
+  type="button"
+  label="Contact Us"
+  icon="pi pi-envelope"
+  (onClick)="overlay.toggle($event)"
+  id="contact-us"
+></p-button>
 
-<section class="contact-us">
-  <form [formGroup]="contactUsForm" class="contact-us__form" id="contact-us">
-    <legend class="contact-us__header">
-      <p class="contact-us__description">Contact us if you have questions</p>
-    </legend>
+<p-overlayPanel #overlay [showCloseIcon]="true">
+  <section class="contact-us">
+    <form [formGroup]="contactUsForm" class="contact-us__form">
+      <legend class="contact-us__header">
+        <p class="contact-us__description">Contact us if you have questions</p>
+      </legend>
 
-    <div class="contact-us__form-field">
-      <input
-        formControlName="username"
-        class="contact-us__text-field"
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Enter your name"
-      />
+      <p-floatLabel>
+        <input
+          class="contact-us__text-field"
+          pInputText
+          formControlName="username"
+          type="text"
+          id="name"
+          name="name"
+          aria-describedby="username-help"
+        />
+        <label for="name">Name</label>
+      </p-floatLabel>
       @if (contactUsForm.controls['username'].touched && contactUsForm.controls['username'].errors; as usernameErrors) {
         <div>
           @if (usernameErrors['required']) {
-            <span class="contact-us__error-message">Username is required</span>
+            <small id="name-help" class="contact-us__error-message"> Username is required</small>
           } @else if (usernameErrors['minlength']) {
-            <span class="contact-us__error-message"> Username must be at least 2 characters long </span>
+            <small id="name-help" class="contact-us__error-message">
+              Username must be at least 2 characters long
+            </small>
           } @else {
-            <span class="contact-us__error-message"> Username cannot exceed 35 characters </span>
+            <small id="name-help" class="contact-us__error-message"> Username cannot exceed 35 characters </small>
           }
         </div>
       }
-    </div>
 
-    <div class="contact-us__form-field">
-      <input
-        formControlName="email"
-        class="contact-us__text-field"
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Enter your email"
-      />
+      <p-floatLabel>
+        <input class="contact-us__text-field" pInputText formControlName="email" type="email" id="email" name="email" />
+        <label for="email">Email</label>
+      </p-floatLabel>
+
       @if (contactUsForm.controls['email'].touched && contactUsForm.controls['email'].errors; as emailErrors) {
         <div>
           @if (emailErrors['required']) {
-            <span class="contact-us__error-message">Email is required</span>
+            <small id="email-help" class="contact-us__error-message"> Email is required</small>
           } @else if (emailErrors['email']) {
-            <span class="contact-us__error-message">Email is not valid</span>
+            <small id="email-help" class="contact-us__error-message"> Email is not valid</small>
           } @else {
-            <span class="contact-us__error-message">Email cannot exceed 255 characters</span>
+            <small id="email-help" class="contact-us__error-message">Email cannot exceed 255 characters</small>
           }
         </div>
       }
-    </div>
 
-    <div class="contact-us__form-field">
-      <textarea
-        formControlName="message"
-        class="contact-us__text-field contact-us__message-field"
-        id="message"
-        name="message"
-        placeholder="Write your message"
-        rows="3"
-      ></textarea>
-
+      <p-floatLabel>
+        <textarea
+          class="contact-us__text-field contact-us__message-field"
+          formControlName="message"
+          pInputTextarea
+          id="message"
+          name="message"
+          rows="3"
+        ></textarea>
+        <label for="message">Write your message here</label>
+      </p-floatLabel>
       @if (contactUsForm.controls['message'].touched && contactUsForm.controls['message'].errors; as messageErrors) {
         <div>
-          @switch (true) {
-            @case (messageErrors['required']) {
-              <span class="contact-us__error-message">Message is required</span>
-            }
-            @case (messageErrors['minlength']) {
-              <span class="contact-us__error-message"> Message must be at least 5 characters long </span>
-            }
-            @default {
-              <span class="contact-us__error-message"> Message cannot exceed 255 characters </span>
-            }
+          @if (messageErrors['required']) {
+            <small id="message-help" class="contact-us__error-message">Message is required</small>
+          } @else if (messageErrors['minlength']) {
+            <small id="message-help" class="contact-us__error-message"
+              >Message must be at least 5 characters long</small
+            >
+          } @else {
+            <small id="message-help" class="contact-us__error-message">Message cannot exceed 255 characters</small>
           }
         </div>
       }
-    </div>
 
-    <section class="contact-us__button">
-      <button
-        type="button"
-        id="submit"
-        class="contact-us__submit-button"
-        [disabled]="contactUsForm.invalid"
-        (click)="submit()"
-      >
-        Submit form
-      </button>
-    </section>
-  </form>
-</section>
+      <div class="contact-us__button">
+        <p-toast
+          [showTransformOptions]="'translateY(100%)'"
+          [showTransitionOptions]="'1000ms'"
+          [hideTransitionOptions]="'1000ms'"
+          [showTransformOptions]="'translateX(100%)'"
+        />
+        <p-button label="Submit" [raised]="true" [disabled]="contactUsForm.invalid" (click)="submit()" />
+      </div>
+    </form>
+  </section>
+</p-overlayPanel>
