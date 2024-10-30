@@ -3,46 +3,39 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutes } from '@Enums/routes.enum';
 
-import { ChatComponent } from './chat/chat.component';
-import { FindRecipesComponent } from './find-recipes/find-recipes.component';
-import { HomeComponent } from './home/home.component';
-import { MyRecipesComponent } from './my-recipes/my-recipes.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
-
 const routes: Routes = [
   {
-    path: AppRoutes.Home,
-    component: HomeComponent,
-  },
-  {
-    path: AppRoutes.Recipes,
-    component: RecipesComponent,
-  },
-  {
-    path: AppRoutes.MyRecipes,
-    component: MyRecipesComponent,
-  },
-  {
-    path: AppRoutes.FindRecipes,
-    component: FindRecipesComponent,
-  },
-  {
-    path: AppRoutes.Chat,
-    component: ChatComponent,
-  },
-  {
     path: AppRoutes.Empty,
-    redirectTo: AppRoutes.Home,
+    loadComponent: () => import('./home/home.component').then((x) => x.HomeComponent),
     pathMatch: 'full',
   },
   {
+    path: AppRoutes.Home,
+    loadComponent: () => import('./home/home.component').then((x) => x.HomeComponent),
+  },
+  {
+    path: AppRoutes.Recipes,
+    loadComponent: () => import('./recipes/recipes.component').then((x) => x.RecipesComponent),
+  },
+  {
+    path: AppRoutes.MyRecipes,
+    loadComponent: () => import('./my-recipes/my-recipes.component').then((x) => x.MyRecipesComponent),
+  },
+  {
+    path: AppRoutes.FindRecipes,
+    loadComponent: () => import('./find-recipes/find-recipes.component').then((x) => x.FindRecipesComponent),
+  },
+  {
+    path: AppRoutes.Chat,
+    loadComponent: () => import('./chat/chat.component').then((x) => x.ChatComponent),
+  },
+  {
     path: AppRoutes.Other,
-    redirectTo: AppRoutes.NotFound,
+    loadComponent: () => import('./shared/pages/not-found/not-found.component').then((x) => x.NotFoundComponent),
   },
   {
     path: AppRoutes.NotFound,
-    component: NotFoundComponent,
+    loadComponent: () => import('./shared/pages/not-found/not-found.component').then((x) => x.NotFoundComponent),
   },
 ];
 
