@@ -3,14 +3,40 @@
     <img src="assets/logo.png" alt="Ups, the image is broken" class="header__logo-image" />
   </a>
 
-  <nav class="header__nav">
-    <ul class="header__list">
-      <li>
-        <a class="header__link sign-in-btn" href="#sign_in">Sign in</a>
-      </li>
-      <li>
-        <a class="header__link contact-us-btn" href="#contact-us">Contact us</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="header__menu">
+    <p class="header__menu-text" (click)="sidebarVisible = true">Menu</p>
+
+    <p-sidebar [(visible)]="sidebarVisible" position="right" icon="pi pi-bars">
+      <div class="sidebar__logo">
+        <img src="assets/logo.png" alt="Ups, the image is broken" class="sidebar__logo-image" />
+        <h4 class="sidebar__name"><span class="highlight">K</span>ozza<span class="highlight">V</span>itta Menu</h4>
+      </div>
+
+      <div class="sidebar__menu">
+        <a routerLink="/recipes" class="sidebar__button p-button p-component">
+          <span class="p-button-icon pi pi-globe"></span>
+          <span class="p-button-label">Find recipe</span>
+        </a>
+        <a routerLink="/recipes" class="sidebar__button p-button p-component">
+          <span class="p-button-icon pi pi-palette"></span>
+          <span class="p-button-label">Create meal from your products</span>
+        </a>
+        <a routerLink="/my-recipes" class="sidebar__button p-button p-component">
+          <span class="p-button-icon pi pi-book"></span>
+          <span class="p-button-label">My CookBook</span>
+        </a>
+        <a routerLink="/chat" class="sidebar__button p-button p-component">
+          <span class="p-button-icon pi pi-video"></span>
+          <span class="p-button-label">Live chat with a nutritionist</span>
+        </a>
+
+        <div class="sidebar__bottom-buttons">
+          <p-button label="Login" [text]="true" routerLink="/login"></p-button>
+          <p-button label="Contact Us" [text]="true" routerLink="" fragment="contact-us"></p-button>
+        </div>
+      </div>
+    </p-sidebar>
+
+    <p-button type="button" class="mr-2" (onClick)="sidebarVisible = true" icon="pi pi-arrow-left" />
+  </div>
 </header>

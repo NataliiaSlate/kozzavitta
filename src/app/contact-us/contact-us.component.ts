@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ToastModule } from 'primeng/toast';
 
 @Component({
@@ -21,6 +22,7 @@ import { ToastModule } from 'primeng/toast';
     FloatLabelModule,
     InputTextModule,
     InputTextareaModule,
+    OverlayPanelModule,
   ],
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.scss',
@@ -47,7 +49,7 @@ export class ContactUsComponent implements OnInit {
 
   submit(): void {
     this.messageService.add({
-      severity: 'success',
+      severity: 'info',
       detail: 'Thank you! We will get back to you soon',
     });
     this.contactUsForm.reset();

@@ -7,4 +7,5 @@ export enum AppRoutes {
   FindRecipes = 'find-recipes',
   Chat = 'chat',
   Home = 'home',
+  Login = 'login',
 }
