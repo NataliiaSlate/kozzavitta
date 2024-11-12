@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
   &:focus {
     outline: none;
@@ -8,6 +9,7 @@
 
 body {
   margin: 0;
+  background-color: #F4F1DE;
 
   p {
     margin-top: 0;

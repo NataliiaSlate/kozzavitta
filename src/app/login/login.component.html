@@ -1,1 +1,78 @@
-<p>login works!</p>
+<p-card [style]="{ width: '360px' }" styleClass="rounded-card" class="login">
+  <ng-template pTemplate="header">
+    <div class="login__header-line"></div>
+    <div>
+      <p class="login__header-text">Login</p>
+    </div>
+  </ng-template>
+  <form [formGroup]="loginForm" class="login__form">
+    <div class="login__form-item">
+      <p-floatLabel>
+        <input
+          class="login__text-field"
+          pInputText
+          placeholder="kozzavitta@email.com"
+          formControlName="email"
+          type="text"
+          id="email"
+          name="email"
+          aria-describedby="email-help"
+        />
+        <label for="email">Email</label>
+      </p-floatLabel>
+      @if (loginForm.controls['email'].touched && loginForm.controls['email'].errors; as emailErrors) {
+        <div>
+          @if (emailErrors['required']) {
+            <small id="email-help" class="login__error-message"> Email is required</small>
+          } @else {
+            <small id="email-help" class="login__error-message"> Email is not valid</small>
+          }
+        </div>
+      }
+    </div>
+    <div class="login__form-item">
+      <p-floatLabel>
+        <input
+          class="login__text-field"
+          pInputText
+          formControlName="password"
+          type="password"
+          id="password"
+          name="password"
+          aria-describedby="password-help"
+        />
+        <label for="password">Password</label>
+      </p-floatLabel>
+      @if (loginForm.controls['password'].touched && loginForm.controls['password'].errors; as passwordErrors) {
+        <div>
+          @if (passwordErrors['required']) {
+            <small id="password-help" class="login__error-message"> Password is required</small>
+          }
+        </div>
+      }
+    </div>
+    <div class="login__forgot-password-container">
+      <a (click)="navigateToForgotPassword()" class="login__forgot-password-link">Forgot Password?</a>
+    </div>
+  </form>
+  <ng-template pTemplate="footer">
+    <div class="login__button-container w-full">
+      <p-button
+        label="Login"
+        severity="primary"
+        class="login__button"
+        [disabled]="loginForm.invalid"
+        styleClass="w-full"
+        (onClick)="login()"
+      />
+    </div>
+    <div class="login__create-account-container">
+      <span>Don't have an account?</span>
+      <a (click)="navigateToRegistration()" class="login__create-account-link">
+        Create account
+        <i class="pi pi-arrow-circle-right"></i>
+      </a>
+    </div>
+  </ng-template>
+</p-card>
+<p-toast position="bottom-left"></p-toast>
