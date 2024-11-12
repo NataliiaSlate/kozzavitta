@@ -34,6 +34,14 @@ const routes: Routes = [
     loadComponent: () => import('./login/login.component').then((x) => x.LoginComponent),
   },
   {
+    path: AppRoutes.Registration,
+    loadComponent: () => import('./registration/registration.component').then((x) => x.RegistrationComponent),
+  },
+  {
+    path: AppRoutes.ForgotPassword,
+    loadComponent: () => import('./forgot-password/forgot-password.component').then((x) => x.ForgotPasswordComponent),
+  },
+  {
     path: AppRoutes.Other,
     loadComponent: () => import('./shared/pages/not-found/not-found.component').then((x) => x.NotFoundComponent),
   },

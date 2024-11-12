@@ -8,4 +8,6 @@ export enum AppRoutes {
   Chat = 'chat',
   Home = 'home',
   Login = 'login',
+  Registration = 'registration',
+  ForgotPassword = 'forgot-password',
 }
